@@ -6,3 +6,13 @@
     --magic-black: #000000;
     
 }
+
+.hero {
+    background-color: var(--magic-blue);
+    color: var(--magic-black);
+    font-family: 'Staatliches', cursive;
+}
+
+.headline {
+    font-size: 4.5rem;
+}
