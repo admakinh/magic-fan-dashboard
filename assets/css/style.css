@@ -13,20 +13,14 @@
   
   }
   
-    
-  
-  
   .headline {
     font-size: 4.5rem;
     text-align:left;
     font-weight: bold;
     margin-left: 0%;
     font-stretch:extra-expanded;
-  
-    
-  
-  
   }
+
   .hero-body{
     padding:1rem 1rem;
   }
@@ -50,4 +44,6 @@
   
   
   
+
+}
 
