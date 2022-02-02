@@ -1,18 +1,49 @@
 /* style page for css */
-
 :root {
     --magic-blue: #0077c0;
     --magic-gray: #c4ced4;
     --magic-black: #000000;
     
-}
-
-.hero {
+  }
+  
+  .hero {
     background-color: var(--magic-blue);
     color: var(--magic-black);
     font-family: 'Staatliches', cursive;
+  
+  }
+  
+  .headline {
+    font-size: 4.5rem;
+    text-align:left;
+    font-weight: bold;
+    margin-left: 0%;
+    font-stretch:extra-expanded;
+  }
+
+  .hero-body{
+    padding:1rem 1rem;
+  }
+  
+  .hero .logo{
+    height:150px;
+  
+  }
+  .button{
+    padding: 16px;
+    font-size: 20px;
+    border: none;
+    background-color:var(--magic-blue);
+    margin-top: 35px;
+  }
+  .dropdown-item{
+    background-color: black;
+    color:white;
+  }
+  
+  
+  
+  
+
 }
 
-.headline {
-    font-size: 4.5rem;
-}
