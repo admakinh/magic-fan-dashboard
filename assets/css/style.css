@@ -51,17 +51,4 @@
     height: 100%;
     
   }
-  
-.is-size-1::after{
-  content:'_';
-  height:10px;
-  width:auto;
-  display:block;
-  background-color:var(--magic-blue)
-
-}  
-  
-  
-
-
 
