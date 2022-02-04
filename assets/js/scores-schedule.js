@@ -1,6 +1,7 @@
 const testing = 1;
 const buttonScoresNBA = $('#buttonScores');
 const buttonScheduleNBA = $('#buttonSchedule');
+const scoresDiv = $('#scores');
 const requestlRootNBA = 'api-nba-v1.p.rapidapi.com';
 var requestPathNBA ='';
 const apiKeyNBA = '0ea8192811msh70fba6f7f64f1e4p11b8b9jsnb91a12aad193';
@@ -29756,7 +29757,7 @@ const playerStats = {
     }
 }
 
-function callAPINBA(pageLoc) {
+function callAPINBA(pageLoc, cbFunction) {
 	// var pageLoc = 'player-stats';
 	switch (pageLoc) {
 		case 'scores':
@@ -29841,87 +29842,48 @@ function callAPINBA(pageLoc) {
 
 	if (!testing) {
 		$.ajax(settingsNBA).done(function (responseNBA) {
-			console.log(responseNBA);
+			cbFunction(pageLoc, responseNBA);
 		});
 	} else {
-		console.log(responseNBA);
+		cbFunction(pageLoc, responseNBA);
 	}
+
+}
+
+function renderScoresNBA(pageLoc, dataNBA) {
+	scoresDiv.css('flex-direction', 'column');
+	scoresDiv.css('flex-wrap', 'no-wrap');
+	scoresDiv.css('align-items', 'stretch');
+console.log(pageLoc);
+	if (pageLoc == 'scores') {
+		for (var i=0; i<dataNBA.api.games.length; i++) {
+			var gameDate = moment(dataNBA.api.games[i].startTimeUTC).format('ddd, MMM Do YYYY');
+			if (dataNBA.api.games[i].seasonYear == '2021' && dataNBA.api.games[i].statusGame == 'Finished') {
+				scoresDiv.append(`<div class="box"><article class="media is-flex"><div class="media-left"><figure class="image is-64x64"><img src="${dataNBA.api.games[i].vTeam.logo}" alt="Image"><p class="has-text-centered"></p><strong>${dataNBA.api.games[i].vTeam.fullName}</strong></p></figure></div><div class="media-content"><div class="content has-text-centered"><p><strong>${gameDate}</strong></p></div></div><div class="media-content"><div class="content has-text-centered"><p><strong>${dataNBA.api.games[i].vTeam.score.points}-${dataNBA.api.games[i].hTeam.score.points}</strong></p></div></div><div class="media-right"><figure class="image is-64x64"><img src="${dataNBA.api.games[i].hTeam.logo}" alt="Image"><p class="has-text-centered"><strong>${dataNBA.api.games[i].vTeam.fullName}</strong></p></figure></div></article></div>`);
+			}
+		}
+	} else {
+		for (var i=0; i<dataNBA.api.games.length; i++) {
+			var gameDate = moment(dataNBA.api.games[i].startTimeUTC).format('ddd, MMM Do YYYY');
+			if (dataNBA.api.games[i].seasonYear == '2021' && dataNBA.api.games[i].statusGame == 'Scheduled') {
+				scoresDiv.append(`<div class="box"><article class="media is-flex"><div class="media-left"><figure class="image is-64x64"><img src="${dataNBA.api.games[i].vTeam.logo}" alt="Image"><p class="has-text-centered"></p><strong>${dataNBA.api.games[i].vTeam.fullName}</strong></p></figure></div><div class="media-content"><div class="content has-text-centered"><p><strong>${gameDate}</strong></p></div></div><div class="media-content"><div class="content has-text-centered"><p><strong>${dataNBA.api.games[i].vTeam.score.points}-${dataNBA.api.games[i].hTeam.score.points}</strong></p></div></div><div class="media-right"><figure class="image is-64x64"><img src="${dataNBA.api.games[i].hTeam.logo}" alt="Image"><p class="has-text-centered"><strong>${dataNBA.api.games[i].vTeam.fullName}</strong></p></figure></div></article></div>`);
+			}
+		}
+	}
+}
+
+function renderStandings(dataNBA) {
+	console.log(pageLoc, dataNBA);
 }
 
 function handleButtonScores() {
 	event.preventDefault();
-	callAPINBA('scores');
+	callAPINBA('scores', renderScoresNBA);
 }
 function handleButtonSchedule() {
 	event.preventDefault();
-	callAPINBA('schedule');
+	callAPINBA('schedule', renderScoresNBA);
 }
 buttonScoresNBA.on('click', handleButtonScores)
 buttonScheduleNBA.on('click', handleButtonSchedule)
 
-// function callAPI(city) {
-
-//     var currentWeatherRequest = 'https://api.openweathermap.org/data/2.5/weather?q=' + city +'&appid=' + apiKey + '&units=imperial';
-
-//     // call api for current weather
-//     fetch(currentWeatherRequest)
-    
-//     .then(function (response) {
-//         // throw error for any type of exception
-//         if (!response.ok) {
-//             // throw response.json();
-//             throw Error(response.json());
-//         }
-
-//         return response.json();
-//     })
-
-//     // get the javascript object
-//     .then(function (currentWeatherResponse) {
-
-//         // make sure object isn't empty
-//         if (!Object.getOwnPropertyNames(currentWeatherResponse).length) {
-//             throw Error(currentWeatherResponse);
-//             // $('#msg').text('No resulits were found');
-//         } else {
-//             // parse for latitude and longitude
-//             var cityLat = currentWeatherResponse.coord.lat;
-//             var cityLon = currentWeatherResponse.coord.lon;
-//             /*** SCOPING ISSUE. CAN'T REFERENCE THE OBJECT OUTSIDE THE PROMISE. SET THE GLOBAL VAR TO THE OBJECT PROP HERE ***/
-//             cityResponse = currentWeatherResponse.name;
-
-//             // show search history in sidebar
-//             renderCityHistory();
-
-//             // call api for forcast data passing lat and lon
-//             var forcastWeatherRequest = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + cityLat + '&lon=' + cityLon + '&exclude=hourly,minutely,alerts&appid=' + apiKey + '&units=imperial';
-
-//             fetch(forcastWeatherRequest)
-//             .then(function (response) {
-//                 if (!response.ok) {
-//                     // throw response.json();
-//                     throw Error(response.json());
-//                 }
-//                 return response.json();
-//             })
-//             .then(function (forcastWeatherResponse) {
-        
-//                 // make sure object isn't empty
-//                 if (!Object.getOwnPropertyNames(forcastWeatherResponse).length) {
-//                     throw Error(forcastWeatherResponse);
-//                 }
-//                 // output data to browser
-//                 /*** SCOPING ISSUE. CAN'T REFERENCE THE OBJECT OUTSIDE THE PROMISE ***/
-//                 renderResults(currentWeatherResponse, forcastWeatherResponse);
-//             })
-//         }
-//     })
-
-//     .catch(function(err) {
-//         console.error(err);
-//         // TODO: parse the error and show better message
-//         $('#msg').text('No resulits were found. Try again.' );
-//         // show user message
-//         toggleMsg('visible');
-//     });
-// }
