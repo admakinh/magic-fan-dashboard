@@ -29851,14 +29851,20 @@ function callAPINBA(pageLoc, cbFunction) {
 }
 
 function renderScoresNBA(pageLoc, dataNBA) {
+    scoresDiv.children().html('');
 	scoresDiv.css('flex-direction', 'column');
 	scoresDiv.css('flex-wrap', 'no-wrap');
 	scoresDiv.css('align-items', 'stretch');
-console.log(pageLoc);
-	if (pageLoc == 'scores') {
+
+    // var scoreDiv = scoresDiv.children().clone();
+    scoresDiv.empty();
+
+    if (pageLoc == 'scores') {
 		for (var i=0; i<dataNBA.api.games.length; i++) {
 			var gameDate = moment(dataNBA.api.games[i].startTimeUTC).format('ddd, MMM Do YYYY');
 			if (dataNBA.api.games[i].seasonYear == '2021' && dataNBA.api.games[i].statusGame == 'Finished') {
+                // scoreDiv.children('.media-left').children('img').attr('src', 'dataNBA.api.games[i].vTeam.logo');
+                // scoreDiv.children('.media-left').children('strong').html(dataNBA.api.games[i].vTeam.fullName);
 				scoresDiv.append(`<div class="box"><article class="media is-flex"><div class="media-left"><figure class="image is-64x64"><img src="${dataNBA.api.games[i].vTeam.logo}" alt="Image"><p class="has-text-centered"></p><strong>${dataNBA.api.games[i].vTeam.fullName}</strong></p></figure></div><div class="media-content"><div class="content has-text-centered"><p><strong>${gameDate}</strong></p></div></div><div class="media-content"><div class="content has-text-centered"><p><strong>${dataNBA.api.games[i].vTeam.score.points}-${dataNBA.api.games[i].hTeam.score.points}</strong></p></div></div><div class="media-right"><figure class="image is-64x64"><img src="${dataNBA.api.games[i].hTeam.logo}" alt="Image"><p class="has-text-centered"><strong>${dataNBA.api.games[i].vTeam.fullName}</strong></p></figure></div></article></div>`);
 			}
 		}
