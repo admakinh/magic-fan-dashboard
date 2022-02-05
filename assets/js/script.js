@@ -1,3 +1,4 @@
+
 // Enter magic javascript here
 const newsTest = {
   status: "ok",
@@ -201,3 +202,7 @@ const displayNews = data => {
 
 // getNews();
 displayNews(newsTest);
+
+const score1=$(#score);
+location.session(score1);
+
