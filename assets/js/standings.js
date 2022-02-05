@@ -2109,6 +2109,7 @@ function renderStandingsNBA(pageLoc, dataNBA) {
 function saveTeams(pageLoc, jsonTeams) {
     localStorage.setItem('teams', JSON.stringify(jsonTeams));
 }
+
 // handlers with callback functions
 function handleButtonStandings() {
     callAPINBA('east', renderStandingsNBA);
@@ -2124,13 +2125,12 @@ function handleButtonConference() {
     }
 }
 
-// event handlers
 $(document).ready(function() {
     if (!localStorage.getItem('teams')) {
         callAPINBA('teams', saveTeams);
     }
     handleButtonStandings();
+    btnEasternStandingNBA.on('click', handleButtonConference);
+    btnWesternStandingNBA.on('click', handleButtonConference);
 });
 
-btnEasternStandingNBA.on('click', handleButtonConference);
-btnWesternStandingNBA.on('click', handleButtonConference);
