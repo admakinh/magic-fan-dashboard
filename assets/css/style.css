@@ -52,8 +52,24 @@
     overflow: hidden;
    text-overflow: ellipsis; 
 }
-    
+.headline span{
+  transition:0.5s;
+}
+
+
+.headline:hover span{
+  color: rgb(150, 169, 175);
   
+  text-shadow:0 0 10px #fff;
+  cursor: pointer;  
+}
+
+  .hero-landing{
+  background:url('../sport.jpg')center center;
+  background-attachment: fixed;
+  background-size: cover;
+
+  }
 
 
  

@@ -21,27 +21,34 @@
     <div class="column">
     <!--button to go back to main page-->
     <div class='buttons'>
-      <button class="button is-small is-link">
+      <button class="button is-small is-link is-light">
         Go back
       </button>
     </div>
     </div>
 
     <!--div to display result-->
-    
-      <div class="column is-offset-3">
-        <h2 class="is-size-1">Standings</h2>
-        <br><br>     
-
+    <section class="hero hero-landing is-medium">
+    <div class="hero-body">
+      <div class="container">  
+      
+        <p class="title has-text-white">
+          Standings
+        </p>
+        </div>
+        </div>
+    </section>
+       
+      
         <div class="container">
-          <div class="columns">
-            <div class="buttons is-flex">
+          <div class="columns ">
+            <div class="buttons">
         
-          <button class="button is-rounded" id="easternStanding">Eastern</button>
-          <button class="button is-rounded" id="westernStanding">Western</button>
+          <button class="button is-rounded is-medium is-flex is-hoverable " id="easternStanding">Eastern</button>
+          <button class="button is-rounded is-medium is-flex is-hoverable" id="westernStanding">Western</button>
           </div>
           </div>
-          <table class="table is-borederd is-hoverable" width="100%">
+          <table class="table is-borederd is-hoverable is-borederd is-offset-6" width="100%">
             <thead>
               <tr>
                 <th><abbr title="Position">Pos</abbr></th>
@@ -66,7 +73,7 @@
 
         </div>
       </div>
-          <script src="  "></script>
+        
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./assets/js/standings.js"></script>
