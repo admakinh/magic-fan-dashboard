@@ -71,6 +71,18 @@
 
   }
 
+  .team-logo {
+    max-height: 64px;
+    width: auto;
+    object-fit: contain;
+    padding: 2px;
+  }
+
+  .sco-sch-card{
+    align-items: center;
+
+  }
+
 
  
  
