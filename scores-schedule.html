@@ -17,71 +17,146 @@
 </head>
 
 <body>
-  <div class="column">
+
+  <div class="columns is-vcentered">
     <!--button to go back to main page-->
-    <div class='buttons'>
-      <button class="button is-small is-link">
+    <div class="buttons is-vcentered">
+      <button class="button is-small is-link is-light">
         Go back
       </button>
     </div>
+  </div>
+
+  <section class="hero hero-landing is-medium">
+    <div class="hero-body">
+      <div class="container">
+
+        <p class="title has-text-white">
+          Standings
+        </p>
+      </div>
     </div>
-
-    <!--div to display result-->
-    
-      <div class="column is-offset-2">
-        <h2 class="is-size-1">Score/Schedule</h2>
-        <br><br>     
-  <div class="container">
-    <div class="columns">
-      <div class="buttons is-flex">
-  
-    <button class="button is-rounded" id="buttonScores">Scores</button>
-    <button class="button is-rounded" id="buttonSchedule">Schedule</button>
-    </div>
-    </div>
+  </section>
 
 
+  <div class="columns ">
+    <div class="column is-full is-gapless">
+      <!-- buttons -->
+      <div class="tabs is-centered">
+        <!--size changed----------------->
+        <ul>
+          <li>
+            <a id="buttonScores">
 
-<div class="columns is-fullwidth is-gapless" id="scores">
-    <!--changed column size-->
-    <div class="box">
-      <article class="media is-flex">
-        <div class="media-left">
-          <figure class="image is-64x64">
-            <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
-            <p class="has-text-centered">
-              <strong>Orlando Magic</strong>
-            </p>
-          </figure>
-        </div>
-        <div class="media-content">   
-          <div class="has-text-centered">
-                
-              <p><strong>108 - 108</strong>
-              
-            </p>
+              <span>Scores</span>
+            </a>
+          </li>
+
+          <li>
+            <a id="buttonSchedule">
+              <span>Schedule</span>
+
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!--div to display result-->
+
+
+
+
+      <!--changed column size-->
+      <!-- AM put container around boxes // fixed column vs columns and ailgnment issues -->
+      <!-- adjusted image size in css to not cut off excess -->
+      <section id="eyes" class="section">
+        <div class="container">
+          <div class="columns is-centered is-vcentered" id="scores">
+
+            <div class="column is-four-fifths">
+
+              <!-- future game box -->
+              <div class="box">
+                <article class="media is-flex is-vcentered sco-sch-card">
+                  <div class="media-left">
+                    <figure class="image"><img class="team-logo"
+                        src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Memphis_Grizzlies.svg/1200px-Memphis_Grizzlies.svg.png"
+                        alt="Image">
+                    </figure>
+                  </div>
+                  <div class="media-left">
+
+                    <p class="has-text-centered"></p><strong>Memphis Grizzlies</strong>
+
+
+                  </div>
+                  <div class="media-content">
+                    <div class="content has-text-centered">
+                      <p><strong>Sat, Feb 5th <br> 2022</strong></p>
+                    </div>
+                  </div>
+                  <div class="media-right">
+
+                    <p class="has-text-centered"></p><strong>Memphis Grizzlies</strong>
+
+
+                  </div>
+                  <div class="media-right">
+                    <figure class="image"><img class="team-logo"
+                        src="https://upload.wikimedia.org/wikipedia/fr/b/bd/Orlando_Magic_logo_2010.png" alt="Image">
+
+                    </figure>
+                  </div>
+                </article>
+              </div>
+              <!-- past game box -->
+              <div class="box">
+                <article class="media is-flex is-vcentered sco-sch-card">
+                  <div class="media-left">
+                    <figure class="image"><img class="team-logo"
+                        src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Memphis_Grizzlies.svg/1200px-Memphis_Grizzlies.svg.png"
+                        alt="Image">
+                    </figure>
+                  </div>
+                  <div class="media-left">
+
+                    <p class="has-text-centered"></p><strong>Memphis Grizzlies</strong>
+
+
+                  </div>
+                  <div class="media-content">
+                    <div class="content has-text-centered">
+                      <p><strong>Sat Feb 5th 2022</strong></p>
+                      <p><strong>FINAL SCORE</strong></p>
+                    </div>
+                  </div>
+                  <div class="media-right">
+
+                    <p class="has-text-centered"></p><strong>Memphis Grizzlies</strong>
+
+
+                  </div>
+                  <div class="media-right">
+                    <figure class="image"><img class="team-logo"
+                        src="https://upload.wikimedia.org/wikipedia/fr/b/bd/Orlando_Magic_logo_2010.png" alt="Image">
+
+                    </figure>
+                  </div>
+                </article>
+              </div>
 
             </div>
-       </div>
-        
-        <div class="media-right">
-          <figure class="image is-64x64">
-            <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
-            <p class="has-text-centered">
-              <strong>Indiana Pacers</strong>
-            </p>
-          </figure>
+          </div>
+
+          <!-- end score/sched -->
         </div>
-      </article>
+
+      </section>
+
     </div>
-
-  </div>
-  <!-- end score/sched -->
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="./assets/js/scores-schedule.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./assets/js/scores-schedule.js"></script>
 </body>
+
 </html>
