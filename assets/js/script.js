@@ -203,6 +203,6 @@ const displayNews = data => {
 // getNews();
 displayNews(newsTest);
 
-const score1=$(#score);
-location.session(score1);
+// const score1=$(#score);
+// location.session(score1);
 
