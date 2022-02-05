@@ -1,5 +1,3 @@
-
-// Enter magic javascript here
 const newsTest = {
   status: "ok",
   total_hits: 1731,
@@ -180,7 +178,6 @@ const getNews = () => {
       return response.json();
     })
     .then(data => {
-      console.log(data);
       displayNews(data);
     })
     .catch(err => {
@@ -202,7 +199,3 @@ const displayNews = data => {
 
 // getNews();
 displayNews(newsTest);
-
-const score1=$(#score);
-location.session(score1);
-
