@@ -185,6 +185,24 @@ const getNews = () => {
     });
 };
 
+const getSpecificNews = (search) => {
+  fetch(`https://api.newscatcherapi.com/v2/search?q=%22Orlando%20Magic%22%20${search}&lang=en&page_size=4`, {
+    "method": "GET",
+    "headers": {
+      "x-api-key": "86v6NAjjo3u3X4bpk6vbSB-SUGXO674Z55E-24lONc4"
+    }
+  })
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      displayNews(data);
+    })
+    .catch(err => {
+      console.error(err);
+    });
+};
+
 const displayNews = data => {
   $(".article-title").each(function (i) {
     $(this).text(data.articles[i].title);
@@ -199,3 +217,11 @@ const displayNews = data => {
 
 // getNews();
 displayNews(newsTest);
+
+const submitNewsSearch = event => {
+  event.preventDefault();
+  let search = $("#news-search-input").val().trim();
+  getSpecificNews(search);
+}
+
+$("#news-search-btn").on("click", submitNewsSearch);
