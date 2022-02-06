@@ -185,7 +185,7 @@ const getNews = () => {
     });
 };
 
-const getSpecificNews = (search) => {
+const getSpecificNews = search => {
   fetch(`https://api.newscatcherapi.com/v2/search?q=%22Orlando%20Magic%22%20${search}&lang=en&page_size=4`, {
     "method": "GET",
     "headers": {
@@ -204,11 +204,14 @@ const getSpecificNews = (search) => {
 };
 
 const displayNews = data => {
+  $(".article-image").each(function (i) {
+    $(this).attr("src", data.articles[i].media);
+  });
   $(".article-title").each(function (i) {
     $(this).text(data.articles[i].title);
   });
-  $(".article-image").each(function (i) {
-    $(this).attr("src", data.articles[i].media);
+  $(".article-excerpt").each(function (i) {
+    $(this).text(data.articles[i].excerpt);
   });
   $(".article-link").each(function (i) {
     $(this).attr("href", data.articles[i].link);
