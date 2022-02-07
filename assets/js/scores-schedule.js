@@ -1,5 +1,5 @@
 // $(document).ready(function() {
-const testing = 1;
+const testing = 0;
 const buttonScoresNBA = $('#buttonScores');
 const buttonScheduleNBA = $('#buttonSchedule');
 const buttonStandingsNBA = $('#buttonStandings');
@@ -9,7 +9,7 @@ const standingsEl = $('#standing-data');
 const requestRootNBA = 'api-nba-v1.p.rapidapi.com';
 var requestPathNBA ='';
 const apiKeyNBA = '0ea8192811msh70fba6f7f64f1e4p11b8b9jsnb91a12aad193';
-var gameIdNBA = 1234;
+var gameIdNBA = 10338
 var playerIdNBA = 1234;
 
 // for testing
@@ -29334,140 +29334,170 @@ var playerIdNBA = 1234;
     }
     const gameDetail = {
         "api": {
-            "status": 200,
-            "message": "GET gameDetails/1234",
-            "results": 1,
-            "filters": [
-                ""
-            ],
-            "game": [
-                {
-                    "seasonYear": "2015",
-                    "league": "standard",
-                    "gameId": "1234",
-                    "startTimeUTC": "2016-03-31T23:00:00.000Z",
-                    "endTimeUTC": "",
-                    "arena": "",
-                    "city": "",
-                    "country": "",
-                    "clock": "",
-                    "gameDuration": "2:03",
-                    "timesTied": "8",
-                    "leadChanges": "8",
-                    "currentPeriod": "4/4",
-                    "halftime": "0",
-                    "EndOfPeriod": "0",
-                    "seasonStage": "2",
-                    "statusShortGame": "3",
-                    "statusGame": "Finished",
-                    "vTeam": {
-                        "fullName": "Orlando Magic",
-                        "teamId": "26",
-                        "nickname": "Magic",
-                        "logo": "https://upload.wikimedia.org/wikipedia/fr/b/bd/Orlando_Magic_logo_2010.png",
-                        "shortName": "ORL",
-                        "allStar": "0",
-                        "nbaFranchise": "1",
-                        "score": {
-                            "win": "32",
-                            "loss": "43",
-                            "seriesWin": "0",
-                            "seriesLoss": "3",
-                            "linescore": [
-                                "33",
-                                "24",
-                                "32",
-                                "25"
-                            ],
-                            "points": "114"
-                        },
-                        "leaders": [
-                            {
-                                "points": "25",
-                                "playerId": "177",
-                                "name": "Evan Fournier"
-                            },
-                            {
-                                "rebounds": "7",
-                                "playerId": "403",
-                                "name": "Victor Oladipo"
-                            },
-                            {
-                                "rebounds": "7",
-                                "playerId": "418",
-                                "name": "Elfrid Payton"
-                            },
-                            {
-                                "assists": "7",
-                                "playerId": "403",
-                                "name": "Victor Oladipo"
-                            }
-                        ]
+        "status": 200,
+        "message": "GET gameDetails/10338",
+        "results": 1,
+        "filters": [
+            ""
+        ],
+        "game": [
+            {
+                "seasonYear": "2021",
+                "league": "standard",
+                "gameId": "10338",
+                "startTimeUTC": "2022-02-03T00:00:00.000Z",
+                "endTimeUTC": "2022-02-03T02:57:00.000Z",
+                "arena": "Gainbridge Fieldhouse",
+                "city": "Indianapolis",
+                "country": "USA",
+                "clock": "",
+                "gameDuration": "2:24",
+                "timesTied": "4",
+                "leadChanges": "3",
+                "currentPeriod": "4/4",
+                "halftime": "0",
+                "EndOfPeriod": "0",
+                "seasonStage": "2",
+                "statusShortGame": "3",
+                "statusGame": "Finished",
+                "vTeam": {
+                    "fullName": "Orlando Magic",
+                    "teamId": "26",
+                    "nickname": "Magic",
+                    "logo": "https://upload.wikimedia.org/wikipedia/fr/b/bd/Orlando_Magic_logo_2010.png",
+                    "shortName": "ORL",
+                    "allStar": "0",
+                    "nbaFranchise": "1",
+                    "score": {
+                        "win": "12",
+                        "loss": "41",
+                        "seriesWin": "1",
+                        "seriesLoss": "0",
+                        "linescore": [
+                            "28",
+                            "25",
+                            "33",
+                            "33"
+                        ],
+                        "points": "119"
                     },
-                    "hTeam": {
-                        "fullName": "Indiana Pacers",
-                        "teamId": "15",
-                        "nickname": "Pacers",
-                        "logo": "https://upload.wikimedia.org/wikipedia/fr/thumb/c/cf/Pacers_de_l%27Indiana_logo.svg/1180px-Pacers_de_l%27Indiana_logo.svg.png",
-                        "shortName": "IND",
-                        "allStar": "0",
-                        "nbaFranchise": "1",
-                        "score": {
-                            "win": "39",
-                            "loss": "36",
-                            "seriesWin": "3",
-                            "seriesLoss": "0",
-                            "linescore": [
-                                "28",
-                                "23",
-                                "28",
-                                "15"
-                            ],
-                            "points": "94"
-                        },
-                        "leaders": [
-                            {
-                                "points": "27",
-                                "playerId": "189",
-                                "name": "Paul George"
-                            },
-                            {
-                                "rebounds": "11",
-                                "playerId": "10",
-                                "name": "Lavoy Allen"
-                            },
-                            {
-                                "assists": "3",
-                                "playerId": "334",
-                                "name": "Ian Mahinmi"
-                            },
-                            {
-                                "assists": "3",
-                                "playerId": "309",
-                                "name": "Ty Lawson"
-                            },
-                            {
-                                "assists": "3",
-                                "playerId": "189",
-                                "name": "Paul George"
-                            }
-                        ]
-                    },
-                    "officials": [
+                    "leaders": [
                         {
-                            "name": "Bill Kennedy"
+                            "points": "19",
+                            "playerId": "950",
+                            "name": "Wendell Carter Jr."
                         },
                         {
-                            "name": "Pat Fraher"
+                            "rebounds": "2",
+                            "playerId": "932",
+                            "name": "Mo Bamba"
                         },
                         {
-                            "name": "Tre Maddox"
+                            "assists": "8",
+                            "playerId": "2852",
+                            "name": "Jalen Suggs"
+                        },
+                        {
+                            "points": "22",
+                            "playerId": "220",
+                            "name": "Gary Harris"
+                        },
+                        {
+                            "rebounds": "3",
+                            "playerId": "1883",
+                            "name": "Chuma Okeke"
+                        },
+                        {
+                            "rebounds": "18",
+                            "playerId": "950",
+                            "name": "Wendell Carter Jr."
+                        },
+                        {
+                            "assists": "8",
+                            "playerId": "2563",
+                            "name": "Cole Anthony"
                         }
                     ]
-                }
-            ]
-        }
+                },
+                "hTeam": {
+                    "fullName": "Indiana Pacers",
+                    "teamId": "15",
+                    "nickname": "Pacers",
+                    "logo": "https://upload.wikimedia.org/wikipedia/fr/thumb/c/cf/Pacers_de_l%27Indiana_logo.svg/1180px-Pacers_de_l%27Indiana_logo.svg.png",
+                    "shortName": "IND",
+                    "allStar": "0",
+                    "nbaFranchise": "1",
+                    "score": {
+                        "win": "19",
+                        "loss": "34",
+                        "seriesWin": "0",
+                        "seriesLoss": "1",
+                        "linescore": [
+                            "34",
+                            "33",
+                            "21",
+                            "30"
+                        ],
+                        "points": "118"
+                    },
+                    "leaders": [
+                        {
+                            "points": "22",
+                            "playerId": "765",
+                            "name": "Torrey Craig"
+                        },
+                        {
+                            "rebounds": "16",
+                            "playerId": "2853",
+                            "name": "Terry Taylor"
+                        },
+                        {
+                            "assists": "2",
+                            "playerId": "765",
+                            "name": "Torrey Craig"
+                        },
+                        {
+                            "assists": "3",
+                            "playerId": "243",
+                            "name": "Justin Holiday"
+                        },
+                        {
+                            "assists": "6",
+                            "playerId": "497",
+                            "name": "Lance Stephenson"
+                        },
+                        {
+                            "assists": "5",
+                            "playerId": "317",
+                            "name": "Caris LeVert"
+                        },
+                        {
+                            "points": "24",
+                            "playerId": "2853",
+                            "name": "Terry Taylor"
+                        },
+                        {
+                            "points": "26",
+                            "playerId": "317",
+                            "name": "Caris LeVert"
+                        }
+                    ]
+                },
+                "officials": [
+                    {
+                        "name": "Tony Brothers"
+                    },
+                    {
+                        "name": "Scott Wall"
+                    },
+                    {
+                        "name": "Andy Nagy"
+                    }
+                ]
+            }
+        ]
     }
+}
     const gameStats = {
         "api": {
             "status": 200,
@@ -29761,12 +29791,10 @@ var playerIdNBA = 1234;
             ]
         }
     }
-    console.log(scoresSchedule);
-
 // });
 
 function callAPINBA(pageLoc, cbFunction) {
-    // var pageLoc = 'player-stats';
+    // var pageLoc = 'game-detail';
     switch (pageLoc) {
         case 'schedule':
             if (!testing) {
@@ -29856,21 +29884,20 @@ function callAPINBA(pageLoc, cbFunction) {
     } else {
         cbFunction(pageLoc, responseNBA);
     }
-
 }
 
 function renderScoresNBA(pageLoc, dataNBA) {
 	// console.log(dataNBA);
-    scoresDiv.css('flex-direction', 'column');
-	scoresDiv.css('flex-wrap', 'no-wrap');
-	scoresDiv.css('align-items', 'stretch');
+    // scoresDiv.css('flex-direction', 'column');
+	// scoresDiv.css('flex-wrap', 'no-wrap');
+	// scoresDiv.css('align-items', 'stretch');
     scoresDiv.empty();
 
 	latestDiv.css('flex-direction', 'column');
 	latestDiv.css('flex-wrap', 'no-wrap');
 	latestDiv.css('align-items', 'stretch');
     latestDiv.empty();
-
+    
     if (pageLoc == 'scores') {
         // show scores last first
 		for (var i = dataNBA.api.games.length-1; i > 0; i--) {
@@ -29878,7 +29905,7 @@ function renderScoresNBA(pageLoc, dataNBA) {
                 var gameDate = moment(dataNBA.api.games[i].startTimeUTC).format('ddd, MMM Do YYYY');
                 // show 6 in sidebar
                 if (latestDiv.length) {
-                    latestDiv.append(`<div data-game-id=${dataNBA.api.games[i].gameId}" class="box"><article class="media is-flex is-vcentered sco-sch-card"><div class="media-left"><figure class="image"><img class="team-logo" src="${dataNBA.api.games[i].vTeam.logo}" alt="Home Team Logo"></figure></div><div class="media-left"><p class="has-text-centered"></p><strong>${dataNBA.api.games[i].vTeam.fullName}</strong></div><div class="media-content"><div class="content has-text-centered"><p><strong>${gameDate}</strong></p><p><strong>${dataNBA.api.games[i].vTeam.score.points}-${dataNBA.api.games[i].hTeam.score.points}</strong></p></div></div><div class="media-right"><p class="has-text-centered"></p><strong>@${dataNBA.api.games[i].hTeam.fullName}</strong></div><div class="media-right"><figure class="image"><img class="team-logo" src="${dataNBA.api.games[i].hTeam.logo}" alt="Visiting Team Logo"></figure></div></article></div>`);
+                    latestDiv.append(`<div data-game-id=${dataNBA.api.games[i].gameId}" class="box"><article class="media is-flex is-vcentered sco-sch-card"><div class="media-left"><figure class="image"><img class="team-logo" src="${dataNBA.api.games[i].vTeam.logo}" alt="Home Team Logo"></figure></div><div class="media-left"><p class="has-text-centered"></p><strong>${dataNBA.api.games[i].vTeam.nickName}</strong></div><div class="media-content"><div class="content has-text-centered"><p><strong>${gameDate}</strong></p><p><strong>${dataNBA.api.games[i].vTeam.score.points}-${dataNBA.api.games[i].hTeam.score.points}</strong></p></div></div><div class="media-right"><p class="has-text-centered"></p><strong>@${dataNBA.api.games[i].hTeam.nickName}</strong></div><div class="media-right"><figure class="image"><img class="team-logo" src="${dataNBA.api.games[i].hTeam.logo}" alt="Visiting Team Logo"></figure></div></article></div>`);
                     // break when 6 divs are appended
                     if (latestDiv.children().length == 6) {
                         break;
@@ -29895,14 +29922,14 @@ function renderScoresNBA(pageLoc, dataNBA) {
                 var gameDate = moment(dataNBA.api.games[i].startTimeUTC).format('ddd, MMM Do YYYY');
                 // show 6 in sidebar
                 if (latestDiv.length) {
-                    latestDiv.append(`<div data-game-id=${dataNBA.api.games[i].gameId}" class="box"><article class="media is-flex is-vcentered sco-sch-card"><div class="media-left"><figure class="image"><img class="team-logo" src="${dataNBA.api.games[i].vTeam.logo}" alt="Home Team Logo"></figure></div><div class="media-left"><p class="has-text-centered"></p><strong>${dataNBA.api.games[i].vTeam.fullName}</strong></div><div class="media-content"><div class="content has-text-centered"><p><strong>${gameDate}</strong></p></div></div><div class="media-right"><p class="has-text-centered"></p><strong>${dataNBA.api.games[i].hTeam.fullName}</strong></div><div class="media-right"><figure class="image"><img class="team-logo" src="${dataNBA.api.games[i].hTeam.logo}" alt="Visiting Team Logo"></figure></div></article></div>`);
+                    latestDiv.append(`<div data-game-id=${dataNBA.api.games[i].gameId}" class="box"><article class="media is-flex is-vcentered sco-sch-card"><div class="media-left"><figure class="image"><img class="team-logo" src="${dataNBA.api.games[i].vTeam.logo}" alt="Home Team Logo"></figure></div><div class="media-left"><p class="has-text-centered"></p><strong>${dataNBA.api.games[i].vTeam.nickName}</strong></div><div class="media-content"><div class="content has-text-centered"><p><strong>${gameDate}</strong></p></div></div><div class="media-right"><p class="has-text-centered"></p><strong>@${dataNBA.api.games[i].hTeam.nickName}</strong></div><div class="media-right"><figure class="image"><img class="team-logo" src="${dataNBA.api.games[i].hTeam.logo}" alt="Visiting Team Logo"></figure></div></article></div>`);
 
                     // break when 6 divs are appended
                     if (latestDiv.children().length == 6) {
                         break;
                     }
                 } else {
-                    scoresDiv.append(`<div data-game-id=${dataNBA.api.games[i].gameId}" class="box"><article class="media is-flex is-vcentered sco-sch-card"><div class="media-left"><figure class="image"><img class="team-logo" src="${dataNBA.api.games[i].vTeam.logo}" alt="Visiting Team Logo"></figure></div><div class="media-left"><p class="has-text-centered"></p><strong>${dataNBA.api.games[i].vTeam.fullName}</strong></div><div class="media-content"><div class="content has-text-centered"><p><strong>${gameDate}</strong></p></div></div><div class="media-right"><p class="has-text-centered"></p><strong>${dataNBA.api.games[i].hTeam.fullName}</strong></div><div class="media-right"><figure class="image"><img class="team-logo" src="${dataNBA.api.games[i].hTeam.logo}" alt="Home Team Logo"></figure></div></article></div>`);
+                    scoresDiv.append(`<div data-game-id=${dataNBA.api.games[i].gameId}" class="box"><article class="media is-flex is-vcentered sco-sch-card"><div class="media-left"><figure class="image"><img class="team-logo" src="${dataNBA.api.games[i].vTeam.logo}" alt="Visiting Team Logo"></figure></div><div class="media-left"><p class="has-text-centered"></p><strong>${dataNBA.api.games[i].vTeam.fullName}</strong></div><div class="media-content"><div class="content has-text-centered"><p><strong>${gameDate}</strong></p></div></div><div class="media-right"><p class="has-text-centered"></p><strong>@${dataNBA.api.games[i].hTeam.fullName}</strong></div><div class="media-right"><figure class="image"><img class="team-logo" src="${dataNBA.api.games[i].hTeam.logo}" alt="Home Team Logo"></figure></div></article></div>`);
                 }
             }
         }
