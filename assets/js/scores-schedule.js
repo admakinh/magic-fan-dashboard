@@ -1,5 +1,5 @@
 // $(document).ready(function() {
-const testing = 0;
+const testing = 1;
 const buttonScoresNBA = $('#buttonScores');
 const buttonScheduleNBA = $('#buttonSchedule');
 const buttonStandingsNBA = $('#buttonStandings');
