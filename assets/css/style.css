@@ -52,6 +52,11 @@
     overflow: hidden;
    text-overflow: ellipsis; 
 }
+/* hover effects on box classes */
+.box:hover {
+  transform:scale(1.1);
+  z-index:1;
+}
 .headline span{
   transition:0.5s;
 }
@@ -81,4 +86,9 @@
   .sco-sch-card{
     align-items: center;
 
+  }
+  /*hover effect on news images */
+ .article-image:hover{  
+      transform:scale(1.1);
+      z-index:1;
   }
