@@ -6,7 +6,7 @@ const buttonStandingsNBA = $('#buttonStandings');
 const scoresDiv = $('#scores');
 const latestDiv = $('#latest-scores');
 const standingsEl = $('#standing-data');
-const requestlRootNBA = 'api-nba-v1.p.rapidapi.com';
+const requestRootNBA = 'api-nba-v1.p.rapidapi.com';
 var requestPathNBA ='';
 const apiKeyNBA = '0ea8192811msh70fba6f7f64f1e4p11b8b9jsnb91a12aad193';
 var gameIdNBA = 1234;
@@ -29761,14 +29761,14 @@ var playerIdNBA = 1234;
             ]
         }
     }
-    // console.log(standings);
+    console.log(scoresSchedule);
 
 // });
 
 function callAPINBA(pageLoc, cbFunction) {
     // var pageLoc = 'player-stats';
     switch (pageLoc) {
-        case 'scores', 'schedule':
+        case 'schedule':
             if (!testing) {
                 // can't filter by season so we get ALL games ever for the team
                 requestPathNBA = '/games/teamId/26';
@@ -29776,7 +29776,16 @@ function callAPINBA(pageLoc, cbFunction) {
                 responseNBA = scoresSchedule;
             }
             break;
-        case 'standings':
+            case 'scores':
+                if (!testing) {
+                    // can't filter by season so we get ALL games ever for the team
+                    requestPathNBA = '/games/teamId/26';
+                } else {
+                    responseNBA = scoresSchedule;
+                }
+                break;
+    
+            case 'standings':
             if (!testing) {
                 // can't filter by season so we get ALL games ever for the team
                 requestPathNBA = '/standings/standard/2021';
@@ -29832,10 +29841,10 @@ function callAPINBA(pageLoc, cbFunction) {
     var settingsNBA = {
         'async': true,
         'crossDomain': true,
-        'url': 'https://' + requestlRootNBA + requestPathNBA,
+        'url': 'https://' + requestRootNBA + requestPathNBA,
         'method': "GET",
         'headers': {
-            'x-rapidapi-host': requestlRootNBA,
+            'x-rapidapi-host': requestRootNBA,
             'x-rapidapi-key': apiKeyNBA
         }
     };
@@ -29851,10 +29860,12 @@ function callAPINBA(pageLoc, cbFunction) {
 }
 
 function renderScoresNBA(pageLoc, dataNBA) {
-	scoresDiv.css('flex-direction', 'column');
+	// console.log(dataNBA);
+    scoresDiv.css('flex-direction', 'column');
 	scoresDiv.css('flex-wrap', 'no-wrap');
 	scoresDiv.css('align-items', 'stretch');
     scoresDiv.empty();
+
 	latestDiv.css('flex-direction', 'column');
 	latestDiv.css('flex-wrap', 'no-wrap');
 	latestDiv.css('align-items', 'stretch');
@@ -29863,20 +29874,17 @@ function renderScoresNBA(pageLoc, dataNBA) {
     if (pageLoc == 'scores') {
         // show scores last first
 		for (var i = dataNBA.api.games.length-1; i > 0; i--) {
-			if (dataNBA.api.games[i].seasonYear == '2021' && dataNBA.api.games[i].statusGame == 'Finished') {
+			if (dataNBA.api.games[i].seasonYear == '2021' && dataNBA.api.games[i].statusGame == 'Finished') { // "In Play" for live
                 var gameDate = moment(dataNBA.api.games[i].startTimeUTC).format('ddd, MMM Do YYYY');
-                // scoreDiv.children('.media-left').children('img').attr('src', 'dataNBA.api.games[i].vTeam.logo');
-                // scoreDiv.children('.media-left').children('strong').html(dataNBA.api.games[i].vTeam.fullName);
                 // show 6 in sidebar
                 if (latestDiv.length) {
-                    console.log(latestDiv.length);
-                    latestDiv.append(`<div data-game-id=${dataNBA.api.games[i].gameId}" class="box"><article class="media is-flex"><div class="media-left"><figure class="image is-64x64"><img src="${dataNBA.api.games[i].vTeam.logo}" alt="Image"><p class="has-text-centered"></p><strong>${dataNBA.api.games[i].vTeam.fullName}</strong></p></figure></div><div class="media-content"><div class="content has-text-centered"><p><strong>${gameDate}</strong></p></div></div><div class="media-content"><div class="content has-text-centered"><p><strong>${dataNBA.api.games[i].vTeam.score.points}-${dataNBA.api.games[i].hTeam.score.points}</strong></p></div></div><div class="media-right"><figure class="image is-64x64"><img src="${dataNBA.api.games[i].hTeam.logo}" alt="Image"><p class="has-text-centered"><strong>${dataNBA.api.games[i].hTeam.fullName}</strong></p></figure></div></article></div>`);
-                    // break when 5 divs are appended and on index.html
+                    latestDiv.append(`<div data-game-id=${dataNBA.api.games[i].gameId}" class="box"><article class="media is-flex is-vcentered sco-sch-card"><div class="media-left"><figure class="image"><img class="team-logo" src="${dataNBA.api.games[i].vTeam.logo}" alt="Home Team Logo"></figure></div><div class="media-left"><p class="has-text-centered"></p><strong>${dataNBA.api.games[i].vTeam.fullName}</strong></div><div class="media-content"><div class="content has-text-centered"><p><strong>${gameDate}</strong></p><p><strong>${dataNBA.api.games[i].vTeam.score.points}-${dataNBA.api.games[i].hTeam.score.points}</strong></p></div></div><div class="media-right"><p class="has-text-centered"></p><strong>@${dataNBA.api.games[i].hTeam.fullName}</strong></div><div class="media-right"><figure class="image"><img class="team-logo" src="${dataNBA.api.games[i].hTeam.logo}" alt="Visiting Team Logo"></figure></div></article></div>`);
+                    // break when 6 divs are appended
                     if (latestDiv.children().length == 6) {
                         break;
                     }
                 } else {
-                    scoresDiv.append(`<div data-game-id=${dataNBA.api.games[i].gameId}" class="box"><article class="media is-flex"><div class="media-left"><figure class="image is-64x64"><img src="${dataNBA.api.games[i].vTeam.logo}" alt="Image"><p class="has-text-centered"></p><strong>${dataNBA.api.games[i].vTeam.fullName}</strong></p></figure></div><div class="media-content"><div class="content has-text-centered"><p><strong>${gameDate}</strong></p></div></div><div class="media-content"><div class="content has-text-centered"><p><strong>${dataNBA.api.games[i].vTeam.score.points}-${dataNBA.api.games[i].hTeam.score.points}</strong></p></div></div><div class="media-right"><figure class="image is-64x64"><img src="${dataNBA.api.games[i].hTeam.logo}" alt="Image"><p class="has-text-centered"><strong>${dataNBA.api.games[i].hTeam.fullName}</strong></p></figure></div></article></div>`);
+                    scoresDiv.append(`<div data-game-id=${dataNBA.api.games[i].gameId}" class="box"><article class="media is-flex is-vcentered sco-sch-card"><div class="media-left"><figure class="image"><img class="team-logo" src="${dataNBA.api.games[i].vTeam.logo}" alt="Visititng Team Logo"></figure></div><div class="media-left"><p class="has-text-centered"></p><strong>${dataNBA.api.games[i].vTeam.fullName}</strong></div><div class="media-content"><div class="content has-text-centered"><p><strong>${gameDate}</strong></p><p><strong>${dataNBA.api.games[i].vTeam.score.points}-${dataNBA.api.games[i].hTeam.score.points}</strong></p></div></div><div class="media-right"><p class="has-text-centered"><strong>@${dataNBA.api.games[i].hTeam.fullName}</strong></p></div><div class="media-right"><figure class="image"><img class="team-logo" src="${dataNBA.api.games[i].hTeam.logo}" alt="Home Team Logo"></figure></div></article></div>`);
                 }
             }
         }
@@ -29887,13 +29895,14 @@ function renderScoresNBA(pageLoc, dataNBA) {
                 var gameDate = moment(dataNBA.api.games[i].startTimeUTC).format('ddd, MMM Do YYYY');
                 // show 6 in sidebar
                 if (latestDiv.length) {
-                    latestDiv.append(`<div data-game-id=${dataNBA.api.games[i].gameId}" class="box"><article class="media is-flex"><div class="media-left"><figure class="image is-64x64"><img src="${dataNBA.api.games[i].vTeam.logo}" alt="Image"><p class="has-text-centered"></p><strong>${dataNBA.api.games[i].vTeam.fullName}</strong></p></figure></div><div class="media-content"><div class="content has-text-centered"><p><strong>${gameDate}</strong></p></div></div><div class="media-content"><div class="content has-text-centered"><p><strong>${dataNBA.api.games[i].vTeam.score.points}-${dataNBA.api.games[i].hTeam.score.points}</strong></p></div></div><div class="media-right"><figure class="image is-64x64"><img src="${dataNBA.api.games[i].hTeam.logo}" alt="Image"><p class="has-text-centered"><strong>${dataNBA.api.games[i].hTeam.fullName}</strong></p></figure></div></article></div>`);
-                    // break when 5 divs are appended and on index.html
+                    latestDiv.append(`<div data-game-id=${dataNBA.api.games[i].gameId}" class="box"><article class="media is-flex is-vcentered sco-sch-card"><div class="media-left"><figure class="image"><img class="team-logo" src="${dataNBA.api.games[i].vTeam.logo}" alt="Home Team Logo"></figure></div><div class="media-left"><p class="has-text-centered"></p><strong>${dataNBA.api.games[i].vTeam.fullName}</strong></div><div class="media-content"><div class="content has-text-centered"><p><strong>${gameDate}</strong></p></div></div><div class="media-right"><p class="has-text-centered"></p><strong>${dataNBA.api.games[i].hTeam.fullName}</strong></div><div class="media-right"><figure class="image"><img class="team-logo" src="${dataNBA.api.games[i].hTeam.logo}" alt="Visiting Team Logo"></figure></div></article></div>`);
+
+                    // break when 6 divs are appended
                     if (latestDiv.children().length == 6) {
                         break;
                     }
                 } else {
-                    scoresDiv.append(`<div data-game-id=${dataNBA.api.games[i].gameId}" class="box"><article class="media is-flex"><div class="media-left"><figure class="image is-64x64"><img src="${dataNBA.api.games[i].vTeam.logo}" alt="Image"><p class="has-text-centered"></p><strong>${dataNBA.api.games[i].vTeam.fullName}</strong></p></figure></div><div class="media-content"><div class="content has-text-centered"><p><strong>${gameDate}</strong></p></div></div><div class="media-content"><div class="content has-text-centered"><p><strong>${dataNBA.api.games[i].vTeam.score.points}-${dataNBA.api.games[i].hTeam.score.points}</strong></p></div></div><div class="media-right"><figure class="image is-64x64"><img src="${dataNBA.api.games[i].hTeam.logo}" alt="Image"><p class="has-text-centered"><strong>${dataNBA.api.games[i].hTeam.fullName}</strong></p></figure></div></article></div>`);
+                    scoresDiv.append(`<div data-game-id=${dataNBA.api.games[i].gameId}" class="box"><article class="media is-flex is-vcentered sco-sch-card"><div class="media-left"><figure class="image"><img class="team-logo" src="${dataNBA.api.games[i].vTeam.logo}" alt="Visiting Team Logo"></figure></div><div class="media-left"><p class="has-text-centered"></p><strong>${dataNBA.api.games[i].vTeam.fullName}</strong></div><div class="media-content"><div class="content has-text-centered"><p><strong>${gameDate}</strong></p></div></div><div class="media-right"><p class="has-text-centered"></p><strong>${dataNBA.api.games[i].hTeam.fullName}</strong></div><div class="media-right"><figure class="image"><img class="team-logo" src="${dataNBA.api.games[i].hTeam.logo}" alt="Home Team Logo"></figure></div></article></div>`);
                 }
             }
         }
