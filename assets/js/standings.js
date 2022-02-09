@@ -1,5 +1,5 @@
 // $(document).ready(function() {
-const testing = 1;
+const testing = 0;
 const btnEasternStandingNBA = $('#easternStanding');
 const btnWesternStandingNBA = $('#westernStanding');
 const standingsEl = $('#standing-data');
